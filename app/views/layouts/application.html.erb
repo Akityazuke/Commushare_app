@@ -1,15 +1,64 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CommushareApp</title>
+    <title>コミュシェア</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script src="https://kit.fontawesome.com/cfed091e21.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
+    <header>
+      <div class="header-logo">
+
+        <% if @current_user %>
+          <%= link_to("コミュシェア","/index")%>
+        <% else %>
+          <%= link_to("コミュシェア","/") %>
+        <% end %>
+
+      </div>
+      <div class="header-menus">
+        <% if session[:id] %>
+
+          <li>
+            <!-- 検索窓 -->
+            <%= %>
+          </li>
+          <li>
+            <!-- ユーザーアイコン -->
+            <div class="image_myuser">
+              <% @Active_user = User.find_by(id: session[:id]) %>
+              <%= link_to("/mypage") do %>
+                <img src="<%= "user_images/#{@Active_user.image_name}"%>" alt="image_myuser">
+              <% end %>
+            </div>
+          </li>
+          <li>
+            <!-- お気に入りアイコン -->
+            <%= link_to("/favor") do %>
+              <i class="fas fa-heart fa-2x"></i>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to("/notice") do %>
+              <img src="app_image/bell.jpg" alt="image_bell">
+            <% end %>
+          </li>
+          <li>
+            <%= link_to("ログアウト","/logout")%>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to("ログイン","/login_form") %>
+          </li>
+        <% end %>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
