@@ -1,0 +1,56 @@
+<div class="main">
+  <div class="container">
+
+    <% if @commus_for_user %>
+
+    <%# タイムライン %>
+      <% @posts_for_user.each do |post|%>
+        <div class="posts-index-item">
+        <%= link_to("/commus/#{post.commu_id}") do %>
+        <% @commu = CommuIndex.find_by(id: post.commu_id) %>
+          <div class="name-box">
+            <div class="post-commu">
+              <img src="<%= "commu_images/#{@commu.image_name}"%>" alt="CommuImage">
+              <p><%= @commu.name %></p>
+            </div>
+          </div>
+        <% end %>
+        <%= link_to("/posts/#{post.id}") do %>
+          <div class="content-box">
+            <div class="post-content">
+              <a><%= post.content %></a>
+              <% if post.image_name != nil %>
+                <img src="<%= "post_image/#{post.image_name}"%>">
+              <% end %>
+            </div>
+            <div class="post-day">
+              <a><%= time_ago_in_words(post.created_at) %></a>
+            </div>
+
+            <% @favor_for_user = UserFavor.find_by(post_id: post.id, user_id: session[:id])%>
+            <div class="post-favor">
+            <% if @favor_for_user %>
+              <%= link_to("/new_favor/#{post.id}",method: :post) do %>
+              <div class="on">
+                <i class="fas fa-heart fa-2x"></i>
+              </div>
+              <% end %>
+            <% else %>
+              <%= link_to("/new_favor/#{post.id}",method: :post) do %>
+              <div class="off">
+                <i class="fas fa-heart fa-2x"></i>
+              </div>
+              <% end %>
+            <% end %>
+            </div>
+            <% end %>
+          </div>
+        <%# <% end %> 
+      </div>
+      <% end %>
+    <% else %>
+      <%#  コミュ未所属ユーザータイムライン%>
+
+    <% end %>
+  </div>
+</div>

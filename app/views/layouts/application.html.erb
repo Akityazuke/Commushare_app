@@ -15,7 +15,7 @@
     <header>
       <div class="header-logo">
 
-        <% if @current_user %>
+        <% if session[:id] != nil %>
           <%= link_to("コミュシェア","/index")%>
         <% else %>
           <%= link_to("コミュシェア","/") %>
@@ -23,7 +23,7 @@
 
       </div>
       <div class="header-menus">
-        <% if session[:id] %>
+        <% if session[:id] != nil %>
 
           <li>
             <!-- 検索窓 -->
