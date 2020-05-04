@@ -8,7 +8,7 @@
   padding: 20px 35px 45px 40px;
   background-color: white;
   font-weight: bold;
-  border: solid 3px #000000;
+  border: solid 1px #000000;
   border-radius: 8px
 }
 
@@ -105,3 +105,21 @@ width: 100%;
 }
 
 // posts/show
+
+
+// form
+.form {
+  max-width: 600px;
+  // background-color: white;
+}
+
+.form textarea{
+  margin: auto;
+  resize: none;
+  max-width: 600px;
+  padding: 10px,10px,10px,10px;
+}
+
+.form input[type="submit"]{
+
+}

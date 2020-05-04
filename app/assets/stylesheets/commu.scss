@@ -1,4 +1,59 @@
 
 // コミュニティー情報に関するデザイン
 
-// posts/inedx 
+// commnu/show.thml
+.commu-items {
+  max-width: 1200px;
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.commu-items li{
+  float: left;
+  list-style: none;
+}
+
+// info
+.commu-items .info{
+  max-width: 300px;
+  margin: 60px auto;
+  text-align: center;
+}
+
+.info .commu-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.info .commu-name {
+
+}
+
+.info .commu-join input[type="button"] {
+}
+
+
+
+.info .commu-content{
+
+}
+
+
+
+
+// users
+.commu-items .users{
+  max-width: 300px;
+  margin: 60px auto;
+}
+
+.users img{
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  padding: 2px
+  // box-shadow: 0 2px 6px #c1ced7;
+  // object-fit: cover;
+}

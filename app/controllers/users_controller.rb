@@ -30,6 +30,10 @@ class UsersController < ApplicationController
 
   end
 
+  def show
+
+  end
+
   def favorrite
 
   end
@@ -43,11 +47,14 @@ class UsersController < ApplicationController
     if @favor.nil?
       @favor = UserFavor.new(post_id:params[:id],user_id: session[:id])
       @favor.save
-      redirect_to("/index")
+      @url = request.referer
+      # redirect_to(@url)
+      redirect_to(@url)
     else
-
       @favor.destroy
-      redirect_to("/index")
+      @url = request.referer
+      # redirect_to(@url)
+      redirect_to(@url)
     end
   end
 

@@ -45,13 +45,13 @@
 # end
 #
 #
-# #サービス上の全投稿数
+#サービス上の全投稿数
 # 1000.times do |i|
 #   content = Faker::Quotes::Rajnikanth.joke,
 #   image_name ="default.jpg"
 #   commu_id = Faker::Number.between(from: 1, to: 100)
 #   user_id = Faker::Number.between(from: 1, to: 500)
-#   protect =   user_id = Faker::Number.between(from: 0, to: 1)
+#   protect = Faker::Number.between(from: 0, to: 1)
 #   CommuPost.create!(
 #     content: content,
 #     image_name: image_name,
@@ -61,11 +61,26 @@
 #   )
 # end
 
-1000.times do |i|
-  post_id = Faker::Number.between(from: 1, to: 1000)
+500.times do |i|
+  content = Faker::Quotes::Rajnikanth.joke,
+  image_name ="default.jpg"
+  commu_id = Faker::Number.between(from: 1, to: 100)
   user_id = Faker::Number.between(from: 1, to: 500)
-  UserFavor.create!(
-    post_id: post_id,
-    user_id: user_id
+  protect = Faker::Number.between(from: 0, to: 1)
+  CommuPost.create!(
+    content: content,
+    image_name: image_name,
+    commu_id: commu_id,
+    user_id: user_id,
+    protect: protect
   )
 end
+
+# 1000.times do |i|
+#   post_id = Faker::Number.between(from: 1, to: 1000)
+#   user_id = Faker::Number.between(from: 1, to: 500)
+#   UserFavor.create!(
+#     post_id: post_id,
+#     user_id: user_id
+#   )
+# end

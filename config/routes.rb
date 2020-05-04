@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post "/login" => "users#login"
   get "/notice" => "users#notice"
   get "/logout" => "users#logout"
+  get "/userpage/:id" => "users#show"
 
   #コミュ情報
   get "/commus/:id" => "commus#show"
