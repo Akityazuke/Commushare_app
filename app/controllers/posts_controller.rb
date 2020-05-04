@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :store_location
+  before_action :require_login
 
   def index
     @commus_for_user = CommuUser.find_by(user_id: session[:id])

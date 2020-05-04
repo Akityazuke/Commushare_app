@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  before_action :store_location, only:[:mypage, :show, :notice, :favorrite, :new_favor]
+  before_action :require_login, only:[:mypage, :show, :notice, :favorrite, :new_favor]
+
 #ユーザーログイン情報
   def login_form
 
@@ -12,7 +15,12 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email],password: params[:password])
     if @user
       session[:id] = @user.id
-      redirect_to("/")
+      if session[:previous_url] != nil
+        flash[:previous_url] = nil
+        redirect_to(session[:previous_url])
+      else
+        redirect_to("/")
+      end
     else
       flash[:notice] = "ログインに失敗しました"
       @email = params[:email]
