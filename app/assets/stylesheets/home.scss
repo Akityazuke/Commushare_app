@@ -157,8 +157,8 @@ header {
 /* --- 全体のBOX定義 ---------------------------------------- */
 .box {
   position   : relative;
-  // width  : 400px;
-  height : 100vh;
+  width: auto;
+  height: 100vh;
   margin     : auto;
   overflow   : hidden;
 }
@@ -176,30 +176,34 @@ header {
 
 /* --- 段差で背景画像のアニメーションを実行 ----------------- */
 .box .src1 {
-  background-image : url('../../public/app_image/image_top02.jpg');   /* 背景の画像を指定 */
+  width: auto;
+  height: 100%;
+  background-image : url('/app_image/image_top02.jpg');   /* 背景の画像を指定 */
 }
 .box .src2 {
-  background-image : url("../../public/app_image/image_top07.jpg");   /* 背景の画像を指定 */
+  width: auto;
+  height: 100%;
+  background-image : url("/app_image/image_top07.jpg");   /* 背景の画像を指定 */
   animation-delay  : 5s;
 }
 .box .src3 {
-  background-image : url("../../public/app_image/image_top05.jpg");   /* 背景の画像を指定 */
+  background-image : url("/app_image/image_top05.jpg");   /* 背景の画像を指定 */
   animation-delay  : 10s;
 }
 .box .src4 {
-  background-image : url("../../public/app_image/image_top06.jpg");   /* 背景の画像を指定 */
+  background-image : url("/app_image/image_top06.jpg");   /* 背景の画像を指定 */
   animation-delay  : 15s;
 }
 .box .src5 {
-  background-image : url("../../public/app_image/image_top01.jpg");   /* 背景の画像を指定 */
+  background-image : url("/app_image/image_top01.jpg");   /* 背景の画像を指定 */
   animation-delay  : 20s;
 }
 .box .src6 {
-  background-image : url("../../public/app_image/image_top03.jpg");   /* 背景の画像を指定 */
+  background-image : url("/app_image/image_top03.jpg");   /* 背景の画像を指定 */
   animation-delay  : 25s;
 }
 .box .src7 {
-  background-image : url("../../public/app_image/image_top04.jpg");   /* 背景の画像を指定 */
+  background-image : url("/app_image/image_top04.jpg");   /* 背景の画像を指定 */
   animation-delay  : 30s;
 }
 
