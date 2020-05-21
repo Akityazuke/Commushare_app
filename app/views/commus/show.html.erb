@@ -1,5 +1,8 @@
+<% #TODO: お気に入りボタン以外画像が表示されない %>
+
 <div class="main">
   <div class="commu-items">
+
     <li>
       <!-- info -->
       <div class="info">
@@ -26,8 +29,12 @@
       <!-- posts -->
       <div class="container">
         <div class="post-form">
-          <textarea name="新規投稿" rows="8" cols="80"></textarea>
-          <input type="submit" name="シェアボタン" value="シェア">
+
+          <%= form_tag("/share/#{@commu.id}", {multipart:true}) do  %>
+            <textarea name="new_content" rows="8" cols="80"></textarea>
+            <input name="image" type="file">
+            <input type="submit" name="シェアボタン" value="シェア">
+          <% end %>
         </div>
         <% if @commu_post.nil? %>
           <p>まだ投稿がありません</p>
@@ -35,49 +42,59 @@
           <% @commu_post.each do |post| %>
             <% @user = User.find_by(id: post.user_id) %>
             <div class="posts-index-item">
+              <ul>
               <% if @user %>
                 <%= link_to("/userpage/#{@user.id}") do %>
                   <div class="name-box">
-                    <div class="post-commu">
-                      <img src="<%= "user_images/#{@user.image_name}"%>" alt="UserImage">
-                      <p><%= @user.name %></p>
+                    <div class="post-user">
+                      <li>
+                        <img src="<%= "user_images/#{@user.image_name}"%>" alt="UserImage">
+                      </li>
+                      <li>
+                        <p><%= @user.name %></p>
+                      </li>
                     </div>
                   </div>
                 <% end %>
               <% end %>
+              </ul>
+              <ul>
+              <br>
               <%= link_to("/post/#{post.id}") do %>
                 <div class="content-box">
-                  <div class="post-content">
-                    <a><%= post.content%></a>
-                    <% if post.image_name %>
-                      <img src="<%= "post_image/#{post.image_name}"%>">
-                    <% end %>
-                  </div>
-                  <div class="post-day">
-                    <a><%= time_ago_in_words(post.created_at)%></a>
-                  </div>
-                  <% @favor = UserFavor.find_by(post_id: post.id, user_id: session[:id])%>
-                  <div class="post-favor">
-                    <% if @favor %>
-                      <%= link_to("/new_favor/#{post.id}",method: :post) do %>
-                      <div class="on">
-                        <i class="fas fa-heart fa-2x"></i>
-                      </div>
+
+                    <div class="post-content">
+                      <a><%= post.content%></a>
+                      <% if post.image_name %>
+                        <img src="<%= "/public/post_image/#{post.image_name}"%>">
                       <% end %>
-                    <% else %>
-                      <%= link_to("/new_favor/#{post.id}",method: :post) do %>
-                      <div class="off">
-                        <i class="fas fa-heart fa-2x"></i>
-                      </div>
+                    </div>
+
+                    <div class="post-day">
+                      <a><%= time_ago_in_words(post.created_at)%></a>
+                    </div>
+                    <% @favor = UserFavor.find_by(post_id: post.id, user_id: session[:id])%>
+                    <div class="post-favor">
+                      <% if @favor %>
+                        <%= link_to("/new_favor/#{post.id}",method: :post) do %>
+                        <div class="on">
+                          <i class="fas fa-heart fa-2x"></i>
+                        </div>
+                        <% end %>
+                      <% else %>
+                        <%= link_to("/new_favor/#{post.id}",method: :post) do %>
+                        <div class="off">
+                          <i class="fas fa-heart fa-2x"></i>
+                        </div>
+                        <% end %>
                       <% end %>
-                    <% end %>
-                  </div>
-                  <% end %>
+                    </div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
+              </ul>
+            </div>
           <% end %>
-        <%# <% end %>
+        <% end %>
       </div>
     </li>
     <li>

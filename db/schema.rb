@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_01_032859) do
+ActiveRecord::Schema.define(version: 2020_05_09_081955) do
 
   create_table "commu_indices", force: :cascade do |t|
     t.string "name"
@@ -22,12 +22,12 @@ ActiveRecord::Schema.define(version: 2020_05_01_032859) do
 
   create_table "commu_posts", force: :cascade do |t|
     t.string "content"
-    t.string "image_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "commu_id"
     t.integer "user_id"
     t.integer "protect"
+    t.string "image_name"
   end
 
   create_table "commu_users", force: :cascade do |t|

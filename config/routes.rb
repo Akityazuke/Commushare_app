@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   #posts
   get "/posts/:id" => "posts#show"
   post "/new_favor/:id" => "users#new_favor"
+  post "/share/:id" => "posts#share"
 
 end
