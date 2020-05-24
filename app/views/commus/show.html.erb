@@ -7,7 +7,7 @@
       <!-- info -->
       <div class="info">
         <div class="commu-image">
-          <img src="<%= "commu_images/#{@commu.image_name}"%>" alt="CommuImage">
+          <img src='<%="/commu_images/#{@commu.image_name}"%>' alt="CommuImage">
         </div>
         <div class="commu-name">
           <p><%= @commu.name %></p>
@@ -48,7 +48,7 @@
                   <div class="name-box">
                     <div class="post-user">
                       <li>
-                        <img src="<%= "user_images/#{@user.image_name}"%>" alt="UserImage">
+                        <img src='<%="/user_images/#{@user.image_name}"%>' alt="UserImage">
                       </li>
                       <li>
                         <p><%= @user.name %></p>
@@ -66,7 +66,7 @@
                     <div class="post-content">
                       <a><%= post.content%></a>
                       <% if post.image_name %>
-                        <img src="<%= "/public/post_image/#{post.image_name}"%>">
+                        <img src=<%="/post_image/#{post.image_name}"%>>
                       <% end %>
                     </div>
 
@@ -103,7 +103,7 @@
         <% @users.each do |user|%>
           <% @user = User.find_by(id: user.user_id) %>
           <%= link_to("/userpage/#{@user.id}") do %>
-            <img src="<%= "user_images/#{@user.image_name}"%>">
+            <img src=<%= "/user_images/#{@user.image_name}"%>>
           <% end %>
         <% end %>
       </div>

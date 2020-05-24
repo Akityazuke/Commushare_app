@@ -34,7 +34,7 @@
             <div class="image_myuser">
               <% @Active_user = User.find_by(id: session[:id]) %>
               <%= link_to("/mypage") do %>
-                <img src="<%= "user_images/#{@Active_user.image_name}"%>" alt="image_myuser">
+                <img src='<%= "/user_images/#{@Active_user.image_name}"%>' alt="image_myuser">
               <% end %>
             </div>
           </li>
@@ -46,7 +46,7 @@
           </li>
           <li>
             <%= link_to("/notice") do %>
-              <img src="app_image/bell.jpg" alt="image_bell">
+              <img src="/app_image/bell.jpg" alt="image_bell">
             <% end %>
           </li>
           <li>
