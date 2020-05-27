@@ -44,6 +44,7 @@
               <i class="fas fa-heart fa-2x"></i>
             <% end %>
           </li>
+          <!-- 通知 -->
           <li>
             <%= link_to("/notice") do %>
               <img src="/app_image/bell.jpg" alt="image_bell">
@@ -58,6 +59,11 @@
           </li>
         <% end %>
       </div>
+      <% if flash[:notice]%>
+  <div class="flash">
+    <a href="#"><%= flash[:notice] %></a>
+  </div>
+<% end %>
     </header>
     <%= yield %>
   </body>
